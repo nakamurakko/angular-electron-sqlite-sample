@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.electron.json",
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+
+    "module": "commonjs",                                /* Specify what module code is generated. */
+    "baseUrl": ".",                                      /* Specify the base directory to resolve non-relative module names. */
+    "paths": {                                           /* Specify a set of entries that re-map imports to additional lookup locations. */
+      "*": [
+        "node_modules/*"
+      ]
+    },
+    "sourceMap": true,                                   /* Create source map files for emitted JavaScript files. */
+    "outDir": "dist",                                    /* Specify an output folder for all emitted files. */
+    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+    "noImplicitAny": true,                               /* Enable error reporting for expressions and declarations with an implied 'any' type. */
+    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+  },
+  "include": [
+    "src/electron/**/*"
+  ]
+}
