@@ -21,14 +21,13 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "emitDecoratorMetadata": true // for typeorm
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  },
-  "emitDecoratorMetadata": true, // for typeorm
-  "experimentalDecorators": true // for typeorm
+  }
 }
