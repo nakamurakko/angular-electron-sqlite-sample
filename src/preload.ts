@@ -1,6 +1,5 @@
 // All of the Node.js APIs are available in the preload process.
 // It has the same sandbox as a Chrome extension.
-
 // https://www.electronjs.org/ja/docs/latest/tutorial/context-isolation
 
 import { contextBridge, ipcRenderer } from 'electron';

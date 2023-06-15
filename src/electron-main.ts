@@ -1,6 +1,8 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 
+import { AppDataSource } from './data-source';
+
 async function createWindow(): Promise<void> {
   // ブラウザウインドウを作成します。
   const mainWindow: BrowserWindow = new BrowserWindow({
@@ -47,6 +49,9 @@ app.on('window-all-closed', () => {
 // このファイルでは、アプリ内のとある他のメインプロセスコードを
 // インクルードできます。
 // 別々のファイルに分割してここで require することもできます。
+
+// DB を初期化。
+void AppDataSource.initialize();
 
 ipcMain.handle('greeting',
   /**

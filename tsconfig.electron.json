@@ -18,6 +18,9 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "src/electron/**/*"
+    "src/app/entities/**/*",
+    "src/data-source.ts",
+    "src/electron-main.ts",
+    "src/preload.ts"
   ]
 }
