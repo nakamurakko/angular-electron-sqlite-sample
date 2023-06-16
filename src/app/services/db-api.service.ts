@@ -1,4 +1,4 @@
-import { defer, map, Observable } from 'rxjs';
+import { defer, Observable } from 'rxjs';
 import { IUser } from 'src/entities/interfaces/i-user';
 
 import { Injectable } from '@angular/core';
@@ -19,10 +19,7 @@ export class DbApiService {
    * @returns ユーザー一覧。
    */
   public getUsers(): Observable<Array<IUser>> {
-    return defer(() => window.DbApi.getUsers())
-      .pipe(
-        map(x => JSON.parse(x) as Array<IUser>)
-      );
+    return defer(() => window.DbApi.getUsers());
   }
 
 }

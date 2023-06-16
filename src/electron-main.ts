@@ -4,6 +4,7 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 
 import { AppDataSource } from './data-source';
+import { IUser } from './entities/interfaces/i-user';
 import { User } from './entities/user';
 
 async function createWindow(): Promise<void> {
@@ -63,7 +64,7 @@ ipcMain.handle('getUsers',
    * @param event イベントデータ。
    * @returns ユーザー一覧。
    */
-  async (event: Electron.IpcMainInvokeEvent): Promise<string> => {
+  async (event: Electron.IpcMainInvokeEvent): Promise<Array<IUser>> => {
     const user: User = new User();
     user.firstName = '太夫';
     user.lastName = '太秦';
@@ -73,7 +74,7 @@ ipcMain.handle('getUsers',
 
     const users: Array<User> = await AppDataSource.getRepository(User).find();
 
-    return JSON.stringify(users);
+    return users;
   });
 
 ipcMain.handle('greeting',
