@@ -1,7 +1,7 @@
 // https://typeorm.io/#quick-start
 import { DataSource } from 'typeorm';
 
-import { User } from './app/entities/user';
+import { User } from './entities/user';
 
 export const AppDataSource: DataSource = new DataSource({
   type: "sqlite",

@@ -2,8 +2,21 @@
 
 declare global {
   interface Window {
+    DbApi: DbApi,
     GreetingApi: GreetingApi
   }
+}
+
+/**
+ * DbApi 用インターフェイス。
+ */
+export interface DbApi {
+  /**
+   * ユーザー一覧を取得する。
+   *
+   * @returns ユーザー一覧。
+   */
+  getUsers(): Promise<string>;
 }
 
 /**

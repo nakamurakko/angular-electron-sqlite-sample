@@ -1,13 +1,15 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
+import { IUser } from './interfaces/i-user';
+
 /**
- * ユーザーエンティティクラス。
+ * ユーザー Entity クラス。
  */
 @Entity()
-export class User {
+export class User implements IUser {
 
   @PrimaryGeneratedColumn('uuid')
-  public id: string = '';
+  public id?: string;
 
   @Column()
   public firstName: string = '';

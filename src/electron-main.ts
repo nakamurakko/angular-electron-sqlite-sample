@@ -1,7 +1,10 @@
+import 'reflect-metadata';
+
 import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 
 import { AppDataSource } from './data-source';
+import { User } from './entities/user';
 
 async function createWindow(): Promise<void> {
   // ブラウザウインドウを作成します。
@@ -52,6 +55,26 @@ app.on('window-all-closed', () => {
 
 // DB を初期化。
 void AppDataSource.initialize();
+
+ipcMain.handle('getUsers',
+  /**
+   * ユーザー一覧を取得する。
+   *
+   * @param event イベントデータ。
+   * @returns ユーザー一覧。
+   */
+  async (event: Electron.IpcMainInvokeEvent): Promise<string> => {
+    const user: User = new User();
+    user.firstName = '太夫';
+    user.lastName = '太秦';
+    console.log(user);
+
+    await AppDataSource.manager.save(user);
+
+    const users: Array<User> = await AppDataSource.getRepository(User).find();
+
+    return JSON.stringify(users);
+  });
 
 ipcMain.handle('greeting',
   /**

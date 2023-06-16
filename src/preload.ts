@@ -4,6 +4,15 @@
 
 import { contextBridge, ipcRenderer } from 'electron';
 
+contextBridge.exposeInMainWorld('DbApi', {
+  /**
+   * ユーザー一覧を返す。
+   *
+   * @returns ユーザー一覧。
+   */
+  getUsers: (): Promise<string> => ipcRenderer.invoke('getUsers').then(value => value as string)
+});
+
 contextBridge.exposeInMainWorld('GreetingApi', {
   /**
    * 挨拶を返す。
