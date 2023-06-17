@@ -43,3 +43,4 @@ Thumbs.db
 
 # Project specific settings
 /executableFile
+database.sqlite
