@@ -3,8 +3,8 @@ import 'reflect-metadata';
 import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 
+import { IUser } from './@types/entities/interfaces/i-user';
 import { AppDataSource } from './data-source';
-import { IUser } from './entities/interfaces/i-user';
 import { User } from './entities/user';
 
 async function createWindow(): Promise<void> {

@@ -1,5 +1,5 @@
 import { defer, Observable } from 'rxjs';
-import { IUser } from 'src/entities/interfaces/i-user';
+import { IUser } from 'src/@types/entities/interfaces/i-user';
 
 import { Injectable } from '@angular/core';
 

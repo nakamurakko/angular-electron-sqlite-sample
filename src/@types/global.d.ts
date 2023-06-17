@@ -1,6 +1,6 @@
 // https://www.electronjs.org/ja/docs/latest/tutorial/context-isolation
 
-import { IUser } from 'src/entities/interfaces/i-user';
+import { IUser } from 'src/@types/entities/interfaces/i-user';
 
 declare global {
   interface Window {
