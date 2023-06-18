@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export default class UserComponent implements OnInit {
+export class UserComponent implements OnInit {
 
   public displayedColumns: Array<string> = ['lastName', 'firstName'];
   public users: Array<IUser> = new Array<IUser>();

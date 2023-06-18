@@ -9,30 +9,15 @@
 
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>angular-electron-sqlite-sample</span>
+    <span>{{title}}</span>
   </mat-toolbar-row>
   <mat-toolbar-row>
+    <button mat-raised-button
+            routerLink="greeting">Greeting</button>
     <button mat-raised-button
             routerLink="user">User</button>
   </mat-toolbar-row>
 </mat-toolbar>
-
-<div class="content"
-     role="main">
-
-  <div>
-    <input id="greeting-to"
-           title="Who is"
-           type="text"
-           [(ngModel)]="greetingTo" />
-    <input id="greeting-button"
-           type="button"
-           value="Greeting"
-           (click)="onGreetingClick()" />
-    <span id="greeting">{{greeting}}</span>
-  </div>
-
-</div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
@@ -42,4 +27,9 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<router-outlet></router-outlet>
+<div class="content"
+     role="main">
+
+  <router-outlet></router-outlet>
+
+</div>

@@ -54,6 +54,22 @@ app.on('window-all-closed', () => {
 // インクルードできます。
 // 別々のファイルに分割してここで require することもできます。
 
+ipcMain.handle('greeting',
+  /**
+   * 挨拶を返す。
+   *
+   * @param event イベントデータ。
+   * @param whoIs 挨拶する相手。
+   * @returns 挨拶。
+   */
+  (event: Electron.IpcMainInvokeEvent, whoIs: string): Promise<string> => {
+    return new Promise((resolve) => {
+      const result: string = 'Hello ' + whoIs + '.';
+      resolve(result);
+      return;
+    });
+  });
+
 // DB を初期化。
 void AppDataSource.initialize()
   .then(async dataSource => {
@@ -81,20 +97,4 @@ ipcMain.handle('getUsers',
    */
   async (event: Electron.IpcMainInvokeEvent): Promise<Array<IUser>> => {
     return await AppDataSource.getRepository(User).find();
-  });
-
-ipcMain.handle('greeting',
-  /**
-   * 挨拶を返す。
-   *
-   * @param event イベントデータ。
-   * @param whoIs 挨拶する相手。
-   * @returns 挨拶。
-   */
-  (event: Electron.IpcMainInvokeEvent, whoIs: string): Promise<string> => {
-    return new Promise((resolve) => {
-      const result: string = 'Hello ' + whoIs + '.';
-      resolve(result);
-      return;
-    });
   });

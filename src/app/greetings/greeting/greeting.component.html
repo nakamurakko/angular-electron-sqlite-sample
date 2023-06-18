@@ -1,0 +1,13 @@
+<p>Greeting</p>
+
+<div>
+  <input id="greeting-to"
+         title="Who is"
+         type="text"
+         [(ngModel)]="greetingTo" />
+  <input id="greeting-button"
+         type="button"
+         value="Greeting"
+         (click)="onGreetingClick()" />
+  <span id="greeting">{{greeting}}</span>
+</div>

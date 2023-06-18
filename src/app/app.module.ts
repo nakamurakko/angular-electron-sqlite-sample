@@ -7,11 +7,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import UserComponent from './users/user/user.component';
+import { GreetingComponent } from './greetings/greeting/greeting.component';
+import { UserComponent } from './users/user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    GreetingComponent,
     UserComponent
   ],
   imports: [
