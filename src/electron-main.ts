@@ -55,7 +55,22 @@ app.on('window-all-closed', () => {
 // 別々のファイルに分割してここで require することもできます。
 
 // DB を初期化。
-void AppDataSource.initialize();
+void AppDataSource.initialize()
+  .then(async dataSource => {
+    const users: Array<User> = await dataSource.manager.find(User);
+    if (users.length == 0) {
+      // サンプルデータを追加。
+      const user1: User = new User();
+      user1.lastName = '太秦';
+      user1.firstName = '太夫';
+      await AppDataSource.manager.save(user1);
+
+      const user2: User = new User();
+      user2.lastName = '車太鼓屋';
+      user2.firstName = '影千代';
+      await AppDataSource.manager.save(user2);
+    }
+  });
 
 ipcMain.handle('getUsers',
   /**
@@ -65,16 +80,7 @@ ipcMain.handle('getUsers',
    * @returns ユーザー一覧。
    */
   async (event: Electron.IpcMainInvokeEvent): Promise<Array<IUser>> => {
-    const user: User = new User();
-    user.firstName = '太夫';
-    user.lastName = '太秦';
-    console.log(user);
-
-    await AppDataSource.manager.save(user);
-
-    const users: Array<User> = await AppDataSource.getRepository(User).find();
-
-    return users;
+    return await AppDataSource.getRepository(User).find();
   });
 
 ipcMain.handle('greeting',

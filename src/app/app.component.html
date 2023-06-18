@@ -7,9 +7,18 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>angular-electron-sqlite-sample</span>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <button mat-raised-button
+            routerLink="user">User</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
 <div class="content"
      role="main">
-  <h1>angular-electron-sqlite-sample</h1>
 
   <div>
     <input id="greeting-to"
@@ -22,6 +31,7 @@
            (click)="onGreetingClick()" />
     <span id="greeting">{{greeting}}</span>
   </div>
+
 </div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
