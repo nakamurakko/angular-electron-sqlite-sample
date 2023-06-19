@@ -1,5 +1,7 @@
 # angular-electron-sqlite-sample
 
+Sample of Angular running with Electron, SQLite, And TypeORM.
+
 ## デバッグ手準備
 
 1. パッケージをインストールする。
