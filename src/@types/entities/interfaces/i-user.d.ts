@@ -7,9 +7,9 @@ export interface IUser {
   id?: string;
 
   /** 名。 */
-  firstName: string;
+  firstName?: string;
 
   /** 姓。 */
-  lastName: string;
+  lastName?: string;
 
 }

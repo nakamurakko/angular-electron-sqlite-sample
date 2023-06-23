@@ -12,9 +12,9 @@ export class User implements IUser {
   public id?: string;
 
   @Column()
-  public firstName: string = '';
+  public firstName?: string;
 
   @Column()
-  public lastName: string = '';
+  public lastName?: string;
 
 }

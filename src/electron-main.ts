@@ -88,6 +88,20 @@ void AppDataSource.initialize()
     }
   });
 
+ipcMain.handle('getUser',
+  /**
+   * ユーザーを取得する。
+   *
+   * @param event イベントデータ。
+   * @param userId ユーザー ID。
+   * @returns ユーザー。
+   */
+  async (event: Electron.IpcMainInvokeEvent, userId: string): Promise<IUser> => {
+    return await AppDataSource.getRepository(User)
+      .findOneBy({ id: userId })
+      .then(value => value as IUser);
+  });
+
 ipcMain.handle('getUsers',
   /**
    * ユーザー一覧を取得する。
@@ -96,5 +110,7 @@ ipcMain.handle('getUsers',
    * @returns ユーザー一覧。
    */
   async (event: Electron.IpcMainInvokeEvent): Promise<Array<IUser>> => {
-    return await AppDataSource.getRepository(User).find();
+    return await AppDataSource.getRepository(User)
+      .find()
+      .then(value => value.map(x => x as IUser));
   });

@@ -20,6 +20,7 @@
   <tr mat-header-row
       *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row
-      *matRowDef="let row; columns: displayedColumns"></tr>
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="selectUser(row)"></tr>
 
 </table>

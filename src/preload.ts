@@ -8,6 +8,13 @@ import { IUser } from './@types/entities/interfaces/i-user';
 
 contextBridge.exposeInMainWorld('DbApi', {
   /**
+   * ユーザーを取得する。
+   *
+   * @param userId ユーザー ID。
+   */
+  getUser: (userId: string): Promise<IUser> => ipcRenderer.invoke('getUser', userId).then(value => value as IUser),
+
+  /**
    * ユーザー一覧を取得する。
    *
    * @returns ユーザー一覧。

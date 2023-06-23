@@ -1,0 +1,27 @@
+<p mat-dialog-title>User detail</p>
+
+<mat-dialog-content>
+
+  <mat-form-field>
+    <mat-label>Last name</mat-label>
+    <input matInput
+           disabled="true"
+           type="text"
+           [value]="user.lastName" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>First name</mat-label>
+    <input matInput
+           disabled="true"
+           type="text"
+           [value]="user.firstName" />
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button mat-raised-button
+          type="button"
+          (click)="onOk()">OK</button>
+</mat-dialog-actions>

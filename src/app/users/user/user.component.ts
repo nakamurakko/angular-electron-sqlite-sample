@@ -2,6 +2,9 @@ import { IUser } from 'src/@types/entities/interfaces/i-user';
 import { DbApiService } from 'src/app/services/db-api.service';
 
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
+import { UserDetailDialogComponent } from '../user-detail-dialog/user-detail-dialog.component';
 
 @Component({
   selector: 'app-user',
@@ -14,7 +17,8 @@ export class UserComponent implements OnInit {
   public users: Array<IUser> = new Array<IUser>();
 
   public constructor(
-    private dbApiService: DbApiService
+    private dbApiService: DbApiService,
+    public dialog: MatDialog
   ) {
   }
 
@@ -23,6 +27,15 @@ export class UserComponent implements OnInit {
       .subscribe(value => {
         this.users = value;
       });
+  }
+
+  /**
+   * ユーザー選択時処理。
+   *
+   * @param user 選択したユーザー。
+   */
+  public selectUser(user: IUser): void {
+    this.dialog.open(UserDetailDialogComponent, { data: { userId: user.id } });
   }
 
 }

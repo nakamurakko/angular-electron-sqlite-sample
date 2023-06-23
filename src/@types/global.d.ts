@@ -14,6 +14,13 @@ declare global {
  */
 export interface DbApi {
   /**
+   * ユーザーを取得する。
+   *
+   * @param userId ユーザー ID。
+   */
+  getUser(userId: string): Promise<IUser>;
+
+  /**
    * ユーザー一覧を取得する。
    *
    * @returns ユーザー一覧。

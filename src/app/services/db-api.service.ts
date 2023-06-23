@@ -14,6 +14,16 @@ export class DbApiService {
   public constructor() { }
 
   /**
+   * ユーザーを取得する。
+   *
+   * @param userId ユーザー ID。
+   * @returns ユーザー。
+   */
+  public getUser(userId: string): Observable<IUser> {
+    return defer(() => window.DbApi.getUser(userId));
+  }
+
+  /**
    * ユーザー一覧を取得する。
    *
    * @returns ユーザー一覧。
