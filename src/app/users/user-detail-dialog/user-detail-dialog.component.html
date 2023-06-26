@@ -1,4 +1,4 @@
-<p mat-dialog-title>User detail</p>
+<h2 mat-dialog-title>User detail</h2>
 
 <mat-dialog-content>
 
@@ -9,15 +9,20 @@
 
     <mat-card-content>
 
-      <mat-form-field>
-        <mat-label>Last name</mat-label>
-        <label>{{user.lastName}}</label>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>First name</mat-label>
-        <label>{{user.firstName}}</label>
-      </mat-form-field>
+      <table>
+        <tbody>
+          <tr>
+            <td>Last name</td>
+            <td>:</td>
+            <td>{{user.lastName}}</td>
+          </tr>
+          <tr>
+            <td>First name</td>
+            <td>:</td>
+            <td>{{user.firstName}}</td>
+          </tr>
+        </tbody>
+      </table>
 
     </mat-card-content>
   </mat-card>
