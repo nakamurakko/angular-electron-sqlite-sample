@@ -21,8 +21,7 @@
     "lib": [
       "ES2022",
       "dom"
-    ],
-    "emitDecoratorMetadata": true // for typeorm
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
