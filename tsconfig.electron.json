@@ -19,9 +19,6 @@
     "emitDecoratorMetadata": true // for typeorm
   },
   "include": [
-    "src/entities/**/*",
-    "src/data-source.ts",
-    "src/electron-main.ts",
-    "src/preload.ts"
+    "src-electron/**/*"
   ]
 }

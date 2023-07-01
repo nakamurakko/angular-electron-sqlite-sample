@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 
-import { IUser } from './@types/entities/interfaces/i-user';
+import { IUser } from '../src/@types/entities/interfaces/i-user';
 import { AppDataSource } from './data-source';
 import { User } from './entities/user';
 

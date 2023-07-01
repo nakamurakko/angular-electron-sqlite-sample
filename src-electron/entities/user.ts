@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-import { IUser } from '../@types/entities/interfaces/i-user';
+import { IUser } from '../../src/@types/entities/interfaces/i-user';
 
 /**
  * ユーザー Entity クラス。

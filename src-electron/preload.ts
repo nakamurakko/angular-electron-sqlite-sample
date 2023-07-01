@@ -4,7 +4,7 @@
 
 import { contextBridge, ipcRenderer } from 'electron';
 
-import { IUser } from './@types/entities/interfaces/i-user';
+import { IUser } from '../src/@types/entities/interfaces/i-user';
 
 contextBridge.exposeInMainWorld('DbApi', {
   /**
