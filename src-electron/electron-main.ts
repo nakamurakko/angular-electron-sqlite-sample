@@ -1,11 +1,12 @@
 import 'reflect-metadata';
 
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 
-import { IUser } from '../src/@types/entities/interfaces/i-user';
 import { AppDataSource } from './data-source';
 import { User } from './entities/user';
+import { registerDbIpc } from './ipc-db';
+import { registerGreetingIpc } from './ipc-greeting';
 
 async function createWindow(): Promise<void> {
   // ブラウザウインドウを作成します。
@@ -54,21 +55,8 @@ app.on('window-all-closed', () => {
 // インクルードできます。
 // 別々のファイルに分割してここで require することもできます。
 
-ipcMain.handle('greeting',
-  /**
-   * 挨拶を返す。
-   *
-   * @param event イベントデータ。
-   * @param whoIs 挨拶する相手。
-   * @returns 挨拶。
-   */
-  (event: Electron.IpcMainInvokeEvent, whoIs: string): Promise<string> => {
-    return new Promise((resolve) => {
-      const result: string = 'Hello ' + whoIs + '.';
-      resolve(result);
-      return;
-    });
-  });
+registerGreetingIpc();
+registerDbIpc();
 
 // DB を初期化。
 void AppDataSource.initialize()
@@ -86,31 +74,4 @@ void AppDataSource.initialize()
       user2.firstName = '影千代';
       await AppDataSource.manager.save(user2);
     }
-  });
-
-ipcMain.handle('getUser',
-  /**
-   * ユーザーを取得する。
-   *
-   * @param event イベントデータ。
-   * @param userId ユーザー ID。
-   * @returns ユーザー。
-   */
-  async (event: Electron.IpcMainInvokeEvent, userId: string): Promise<IUser> => {
-    return await AppDataSource.getRepository(User)
-      .findOneBy({ id: userId })
-      .then(value => value as IUser);
-  });
-
-ipcMain.handle('getUsers',
-  /**
-   * ユーザー一覧を取得する。
-   *
-   * @param event イベントデータ。
-   * @returns ユーザー一覧。
-   */
-  async (event: Electron.IpcMainInvokeEvent): Promise<Array<IUser>> => {
-    return await AppDataSource.getRepository(User)
-      .find()
-      .then(value => value.map(x => x as IUser));
   });
