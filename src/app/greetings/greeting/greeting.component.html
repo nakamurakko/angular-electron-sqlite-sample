@@ -1,13 +1,18 @@
 <h2>Greeting</h2>
 
-<div>
-  <input id="greeting-to"
-         title="Who is"
-         type="text"
-         [(ngModel)]="greetingTo" />
-  <input id="greeting-button"
-         type="button"
-         value="Greeting"
-         (click)="onGreetingClick()" />
-  <span id="greeting">{{greeting}}</span>
+<div class="div-padding">
+  <mat-form-field>
+    <input matInput
+           title="Who is"
+           type="text"
+           [(ngModel)]="greetingTo" />
+  </mat-form-field>
+</div>
+<div class="div-padding">
+  <button mat-raised-button
+          type="button"
+          (click)="onGreetingClick()">Greeting</button>
+</div>
+<div class="div-padding">
+  <label>{{greeting}}</label>
 </div>
