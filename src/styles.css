@@ -9,6 +9,37 @@ body {
   margin: 0;
 }
 
+.div-app-content {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+}
+
+.div-main {
+  align-items: stretch;
+  display: grid;
+  grid-template-rows: 1fr;
+  justify-content: stretch;
+}
+
+.div-main-progress {
+  align-items: center;
+  display: grid;
+  justify-content: center;
+  z-index: 100;
+}
+
+.div-main-router-outlet {
+  align-items: stretch;
+  justify-content: stretch;
+  position: absolute;
+  width: 100%;
+}
+
 .div-padding {
   padding: 0.5rem;
+}
+
+.spinner-opacity {
+  opacity: 0.2;
 }
