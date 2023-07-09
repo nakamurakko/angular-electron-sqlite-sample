@@ -9,33 +9,6 @@ body {
   margin: 0;
 }
 
-.div-app-content {
-  display: grid;
-  grid-template-rows: 1fr;
-  height: 100%;
-}
-
-.div-app-progress {
-  align-items: center;
-  display: grid;
-  height: 100%;
-  justify-content: center;
-  position: absolute;
-  z-index: 100;
-  width: 100%;
-}
-
-.div-app-main {
-  align-items: stretch;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  justify-content: stretch;
-}
-
 .div-padding {
   padding: 0.5rem;
-}
-
-.spinner-opacity {
-  opacity: 0.2;
 }
