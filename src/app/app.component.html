@@ -1,26 +1,27 @@
 <div class="div-app-content">
 
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <span>{{title}}</span>
-    </mat-toolbar-row>
-    <mat-toolbar-row>
-      <button mat-raised-button
-              routerLink="user">User</button>
-      <button mat-raised-button
-              routerLink="greeting">Greeting</button>
-    </mat-toolbar-row>
-  </mat-toolbar>
+  <div *ngIf="progressStatus"
+       class="div-app-progress">
+    <mat-spinner class="spinner-opacity">
+    </mat-spinner>
+  </div>
 
-  <div class="div-main"
+
+  <div class="div-app-main"
        role="main">
-    <div *ngIf="progressStatus"
-         class="div-main-progress">
-      <mat-spinner class="spinner-opacity">
-      </mat-spinner>
-    </div>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>{{title}}</span>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+        <button mat-raised-button
+                routerLink="user">User</button>
+        <button mat-raised-button
+                routerLink="greeting">Greeting</button>
+      </mat-toolbar-row>
+    </mat-toolbar>
 
-    <div class="div-main-router-outlet">
+    <div>
       <router-outlet></router-outlet>
     </div>
   </div>
