@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 import { Injectable } from '@angular/core';
 
@@ -22,9 +22,8 @@ export class ProgressService {
    *
    * @returns プログレス表示状態。
    */
-  public showProgress(): Observable<boolean> {
+  public showProgress(): void {
     this._isShowProgress.next(true);
-    return of(this._isShowProgress.getValue());
   }
 
   /**
@@ -32,9 +31,8 @@ export class ProgressService {
    *
    * @returns プログレス表示状態。
    */
-  public hideProgress(): Observable<boolean> {
+  public hideProgress(): void {
     this._isShowProgress.next(false);
-    return of(this._isShowProgress.getValue());
   }
 
 }

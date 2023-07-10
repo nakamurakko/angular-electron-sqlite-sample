@@ -1,4 +1,4 @@
-import { delay, finalize, mergeMap } from 'rxjs';
+import { delay, finalize } from 'rxjs';
 import { IUser } from 'src/@types/entities/interfaces/i-user';
 import { DbApiService } from 'src/app/services/db-api.service';
 import { ProgressService } from 'src/app/services/progress.service';
@@ -38,9 +38,9 @@ export class UserComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.progressService.showProgress()
+    this.progressService.showProgress();
+    this.dbApiService.getUsers()
       .pipe(
-        mergeMap(() => this.dbApiService.getUsers()),
         // プログレス表示を分かりやすくするために1秒遅延させる。
         delay(1000),
         finalize(() => this.progressService.hideProgress())

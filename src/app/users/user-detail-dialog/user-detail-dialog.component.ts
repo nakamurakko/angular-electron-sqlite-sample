@@ -1,4 +1,4 @@
-import { finalize, mergeMap } from 'rxjs';
+import { finalize } from 'rxjs';
 import { IUser } from 'src/@types/entities/interfaces/i-user';
 import { DialogResult } from 'src/app/data-types/dialog-result';
 import { DbApiService } from 'src/app/services/db-api.service';
@@ -41,9 +41,9 @@ export class UserDetailDialogComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.progressService.showProgress()
+    this.progressService.showProgress();
+    this.dbApiService.getUser(this.userId)
       .pipe(
-        mergeMap(() => this.dbApiService.getUser(this.userId)),
         finalize(() => this.progressService.hideProgress())
       )
       .subscribe(value => {
