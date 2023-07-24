@@ -12,4 +12,6 @@ export interface IUser {
   /** 姓。 */
   lastName?: string;
 
+  /** 写真。 Data URL + base64 データで文字列化する。 */
+  portrait?: string;
 }

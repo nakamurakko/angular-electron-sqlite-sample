@@ -17,4 +17,7 @@ export class User implements IUser {
   @Column()
   public lastName?: string;
 
+  @Column({ nullable: true })
+  public portrait?: string;
+
 }

@@ -16,6 +16,11 @@
         </tbody>
       </table>
 
+      <img *ngIf="user.portrait"
+           mat-card-image
+           alt="portrait"
+           [src]="user.portrait">
+
     </mat-card-content>
   </mat-card>
 

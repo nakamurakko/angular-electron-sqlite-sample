@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 
 import { app, BrowserWindow } from 'electron';
+import { readFileSync } from 'original-fs';
 import * as path from 'path';
 
 import { AppDataSource } from './data-source';
@@ -67,6 +68,7 @@ void AppDataSource.initialize()
       const user1: User = new User();
       user1.lastName = '太秦';
       user1.firstName = '太夫';
+      user1.portrait = 'data:image/png;base64,' + readFileSync('sample.png', 'base64');
       await AppDataSource.manager.save(user1);
 
       const user2: User = new User();
