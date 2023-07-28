@@ -21,13 +21,3 @@ contextBridge.exposeInMainWorld('DbApi', {
    */
   getUsers: (): Promise<Array<IUser>> => ipcRenderer.invoke('getUsers').then(value => value as Array<IUser>)
 });
-
-contextBridge.exposeInMainWorld('GreetingApi', {
-  /**
-   * 挨拶を返す。
-   *
-   * @param whoIs 挨拶する相手
-   * @returns 挨拶。
-   */
-  greeting: (whoIs: string): Promise<string> => ipcRenderer.invoke('greeting', whoIs).then(value => value as string)
-});

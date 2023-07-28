@@ -6,24 +6,9 @@
     </mat-spinner>
   </div>
 
-
   <div class="div-app-main"
        role="main">
-    <mat-toolbar color="primary">
-      <mat-toolbar-row>
-        <span>{{title}}</span>
-      </mat-toolbar-row>
-      <mat-toolbar-row>
-        <button mat-raised-button
-                routerLink="user">User</button>
-        <button mat-raised-button
-                routerLink="greeting">Greeting</button>
-      </mat-toolbar-row>
-    </mat-toolbar>
-
-    <div>
-      <router-outlet></router-outlet>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 
 </div>

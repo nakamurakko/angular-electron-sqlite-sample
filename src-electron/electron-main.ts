@@ -7,7 +7,6 @@ import * as path from 'path';
 import { AppDataSource } from './data-source';
 import { User } from './entities/user';
 import { registerDbIpc } from './ipc-db';
-import { registerGreetingIpc } from './ipc-greeting';
 
 async function createWindow(): Promise<void> {
   // ブラウザウインドウを作成します。
@@ -56,7 +55,6 @@ app.on('window-all-closed', () => {
 // インクルードできます。
 // 別々のファイルに分割してここで require することもできます。
 
-registerGreetingIpc();
 registerDbIpc();
 
 // DB を初期化。
