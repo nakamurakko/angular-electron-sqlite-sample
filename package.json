@@ -28,10 +28,16 @@
       "!.github",
       "!.vscode",
       "!angular.json",
+      "!build-dev.bat",
+      "!build-portable.bat",
+      "!database.sqlite",
       "!src",
       "!LICENSE",
       "!README.md",
       "!tsconfig*.json"
+    ],
+    "extraFiles": [
+      "sample.png"
     ]
   },
   "dependencies": {
