@@ -27,10 +27,9 @@ export function registerDbIpc(): void {
     /**
      * ユーザー一覧を取得する。
      *
-     * @param event イベントデータ。
      * @returns ユーザー一覧。
      */
-    async (event: Electron.IpcMainInvokeEvent): Promise<Array<IUser>> => {
+    async (): Promise<Array<IUser>> => {
       return await AppDataSource.getRepository(User)
         .find()
         .then(value => value.map(x => x as IUser));
