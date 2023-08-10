@@ -1,0 +1,38 @@
+<mat-dialog-content>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>New user</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <span class="span-padding">
+        <mat-form-field>
+          <mat-label>Last name</mat-label>
+          <input matInput
+                 placeholder="Last name"
+                 [(ngModel)]="user.lastName" />
+        </mat-form-field>
+      </span>
+
+      <span class="span-padding">
+        <mat-form-field>
+          <mat-label>First name</mat-label>
+          <input matInput
+                 placeholder="First name"
+                 [(ngModel)]="user.firstName" />
+        </mat-form-field>
+      </span>
+    </mat-card-content>
+  </mat-card>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button mat-raised-button
+          type="button"
+          (click)="onSave()">Save</button>
+  <button mat-raised-button
+          type="button"
+          (click)="onCancel()">Cancel</button>
+</mat-dialog-actions>

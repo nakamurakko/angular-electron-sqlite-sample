@@ -9,6 +9,20 @@ import { User } from './entities/user';
  */
 export function registerDbIpc(): void {
 
+  ipcMain.handle('addUser',
+    /**
+     * ユーザーを追加する。
+     *
+     * @param event イベントデータ。
+     * @param user ユーザー ID。
+     * @returns ユーザー。
+     */
+    async (event: Electron.IpcMainInvokeEvent, user: IUser): Promise<IUser> => {
+      return await AppDataSource.getRepository(User)
+        .save(user)
+        .then(value => value as IUser);
+    });
+
   ipcMain.handle('getUser',
     /**
      * ユーザーを取得する。

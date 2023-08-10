@@ -12,6 +12,15 @@ declare global {
  * DbApi 用インターフェイス。
  */
 export interface DbApi {
+
+  /**
+   * ユーザーを追加する。
+   *
+   * @param user ユーザー ID。
+   * @returns ユーザー。
+   */
+  addUser(user: IUser): Promise<IUser>;
+
   /**
    * ユーザーを取得する。
    *
@@ -25,4 +34,5 @@ export interface DbApi {
    * @returns ユーザー一覧。
    */
   getUsers(): Promise<Array<IUser>>;
+
 }

@@ -1,5 +1,6 @@
-import { delay, finalize } from 'rxjs';
+import { delay, finalize, map, mergeMap, takeWhile, tap } from 'rxjs';
 import { IUser } from 'src/@types/entities/interfaces/i-user';
+import { DialogResult } from 'src/app/data-types/dialog-result';
 import { DbApiService } from 'src/app/services/db-api.service';
 import { ProgressService } from 'src/app/services/progress.service';
 
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { UserDetailDialogComponent } from '../user-detail-dialog/user-detail-dialog.component';
+import { UserEditDialogComponent } from '../user-edit-dialog/user-edit-dialog.component';
 
 /**
  * ユーザー情報表示用コンポーネント。
@@ -57,6 +59,25 @@ export class UserComponent implements OnInit {
    */
   public selectUser(user: IUser): void {
     this.dialog.open(UserDetailDialogComponent, { data: { userId: user.id } });
+  }
+
+  /**
+   * ユーザーを追加する。
+   */
+  public addUser(): void {
+    this.dialog.open(UserEditDialogComponent)
+      .afterClosed()
+      .pipe(
+        map(x => x as DialogResult),
+        takeWhile(x => x === DialogResult.OK),
+        tap(() => this.progressService.showProgress()),
+        mergeMap(() => this.dbApiService.getUsers()),
+        // プログレス表示を分かりやすくするために1秒遅延させる。
+        delay(1000),
+        finalize(() => this.progressService.hideProgress()),
+        mergeMap(x => this.users = x)
+      )
+      .subscribe();
   }
 
 }

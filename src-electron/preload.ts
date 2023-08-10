@@ -7,6 +7,15 @@ import { contextBridge, ipcRenderer } from 'electron';
 import { IUser } from '../src/@types/entities/interfaces/i-user';
 
 contextBridge.exposeInMainWorld('DbApi', {
+
+  /**
+   * ユーザーを追加する。
+   *
+   * @param user ユーザー ID。
+   * @returns ユーザー。
+   */
+  addUser: (user: IUser): Promise<IUser> => ipcRenderer.invoke('addUser', user).then(value => value as IUser),
+
   /**
    * ユーザーを取得する。
    *
@@ -20,4 +29,5 @@ contextBridge.exposeInMainWorld('DbApi', {
    * @returns ユーザー一覧。
    */
   getUsers: (): Promise<Array<IUser>> => ipcRenderer.invoke('getUsers').then(value => value as Array<IUser>)
+
 });

@@ -14,6 +14,16 @@ export class DbApiService {
   public constructor() { }
 
   /**
+   * ユーザーを追加する。
+   *
+   * @param user ユーザー ID。
+   * @returns ユーザー。
+   */
+  public addUser(user: IUser): Observable<IUser> {
+    return defer(() => window.DbApi.addUser(user));
+  }
+
+  /**
    * ユーザーを取得する。
    *
    * @param userId ユーザー ID。

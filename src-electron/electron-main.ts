@@ -61,7 +61,7 @@ registerDbIpc();
 void AppDataSource.initialize()
   .then(async dataSource => {
     const users: Array<User> = await dataSource.manager.find(User);
-    if (users.length == 0) {
+    if (users.length === 0) {
       // サンプルデータを追加。
       const user1: User = new User();
       user1.lastName = '太秦';

@@ -26,16 +26,16 @@ export class UserDetailDialogComponent implements OnInit {
   /**
    * コンストラクター。
    *
-   * @param dbApiService DB サービス。
-   * @param progressService プログレスサービス。
    * @param dialogRef ダイアログリファレンス。
    * @param data ダイアログに受け渡すデータ。
+   * @param dbApiService DB サービス。
+   * @param progressService プログレスサービス。
    */
   public constructor(
-    private dbApiService: DbApiService,
-    private progressService: ProgressService,
     public dialogRef: MatDialogRef<UserDetailDialogComponent, DialogResult>,
-    @Inject(MAT_DIALOG_DATA) public data: UserDetailDialogData
+    @Inject(MAT_DIALOG_DATA) public data: UserDetailDialogData,
+    private dbApiService: DbApiService,
+    private progressService: ProgressService
   ) {
     this.userId = data.userId;
   }

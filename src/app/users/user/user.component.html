@@ -1,4 +1,12 @@
-<h2>User list</h2>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <h2>User list</h2>
+    <span class="span-padding">
+      <button mat-raised-button
+              (click)="addUser()">Add user</button>
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
 
 <table mat-table
        [dataSource]="users">
