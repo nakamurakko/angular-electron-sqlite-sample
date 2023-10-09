@@ -21,7 +21,7 @@ import { UserEditDialogComponent } from '../user-edit-dialog/user-edit-dialog.co
 export class UserComponent implements OnInit {
 
   /** 一覧のヘッダー。 */
-  public displayedColumns: Array<string> = ['lastName', 'firstName'];
+  public displayedColumns: Array<string> = ['lastName', 'firstName', 'showUserDetail', 'editUser'];
   /** ユーザー一覧。 */
   public users: Array<IUser> = new Array<IUser>();
 
@@ -66,6 +66,27 @@ export class UserComponent implements OnInit {
    */
   public addUser(): void {
     this.dialog.open(UserEditDialogComponent)
+      .afterClosed()
+      .pipe(
+        map(x => x as DialogResult),
+        takeWhile(x => x === DialogResult.OK),
+        tap(() => this.progressService.showProgress()),
+        mergeMap(() => this.dbApiService.getUsers()),
+        // プログレス表示を分かりやすくするために1秒遅延させる。
+        delay(1000),
+        finalize(() => this.progressService.hideProgress()),
+        mergeMap(x => this.users = x)
+      )
+      .subscribe();
+  }
+
+  /**
+   * ユーザーを編集する。
+   *
+   * @param user 選択したユーザー。
+   */
+  public editUser(user: IUser): void {
+    this.dialog.open(UserEditDialogComponent, { data: { userId: user.id } })
       .afterClosed()
       .pipe(
         map(x => x as DialogResult),

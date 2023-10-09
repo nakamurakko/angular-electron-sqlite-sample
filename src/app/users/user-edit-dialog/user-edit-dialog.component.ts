@@ -4,15 +4,21 @@ import { DialogResult } from 'src/app/data-types/dialog-result';
 import { DbApiService } from 'src/app/services/db-api.service';
 import { ProgressService } from 'src/app/services/progress.service';
 
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
+/**
+ * ユーザー編集ダイアログコンポーネント。
+ */
 @Component({
   selector: 'app-user-edit-dialog',
   templateUrl: './user-edit-dialog.component.html',
   styleUrls: ['./user-edit-dialog.component.css']
 })
-export class UserEditDialogComponent {
+export class UserEditDialogComponent implements OnInit {
+
+  /** ユーザー ID。新規の場合は空。 */
+  public userId: string = '';
 
   /** 編集ユーザー情報。 */
   public user: IUser = {};
@@ -24,9 +30,28 @@ export class UserEditDialogComponent {
    */
   public constructor(
     public dialogRef: MatDialogRef<UserEditDialogComponent, DialogResult>,
+    @Inject(MAT_DIALOG_DATA) public data: UserEditDialogData,
     private dbApiService: DbApiService,
     private progressService: ProgressService
   ) {
+    if (data) {
+      this.userId = data.userId;
+    }
+  }
+
+  public ngOnInit(): void {
+    if (!this.userId) {
+      return;
+    }
+
+    this.progressService.showProgress();
+    this.dbApiService.getUser(this.userId)
+      .pipe(
+        finalize(() => this.progressService.hideProgress())
+      )
+      .subscribe(value => {
+        this.user = value;
+      });
   }
 
   /**
@@ -50,4 +75,11 @@ export class UserEditDialogComponent {
     this.dialogRef.close(DialogResult.Cancel);
   }
 
+}
+
+/**
+ * UserEditDialogComponent.data 用インターフェイス。
+ */
+export interface UserEditDialogData {
+  userId: string;
 }
