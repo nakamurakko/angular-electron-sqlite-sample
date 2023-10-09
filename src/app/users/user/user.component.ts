@@ -86,7 +86,7 @@ export class UserComponent implements OnInit {
    * @param user 選択したユーザー。
    */
   public editUser(user: IUser): void {
-    this.dialog.open(UserEditDialogComponent, { data: { userId: user.id } })
+    this.dialog.open(UserEditDialogComponent, { data: { user: user } })
       .afterClosed()
       .pipe(
         map(x => x as DialogResult),

@@ -17,9 +17,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class UserEditDialogComponent implements OnInit {
 
-  /** ユーザー ID。新規の場合は空。 */
-  public userId: string = '';
-
   /** 編集ユーザー情報。 */
   public user: IUser = {};
 
@@ -37,18 +34,18 @@ export class UserEditDialogComponent implements OnInit {
     private dbApiService: DbApiService,
     private progressService: ProgressService
   ) {
-    if (data) {
-      this.userId = data.userId;
+    if (data?.user) {
+      this.user = data.user;
     }
   }
 
   public ngOnInit(): void {
-    if (!this.userId) {
+    if (!this.user?.id) {
       return;
     }
 
     this.progressService.showProgress();
-    this.dbApiService.getUser(this.userId)
+    this.dbApiService.getUser(this.user.id)
       .pipe(
         finalize(() => this.progressService.hideProgress())
       )
@@ -84,5 +81,5 @@ export class UserEditDialogComponent implements OnInit {
  * UserEditDialogComponent.data 用インターフェイス。
  */
 export interface UserEditDialogData {
-  userId: string;
+  user: IUser;
 }
