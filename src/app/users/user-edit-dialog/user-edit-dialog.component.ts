@@ -25,8 +25,11 @@ export class UserEditDialogComponent implements OnInit {
 
   /**
    * コンストラクター。
-   *
+   * 
    * @param dialogRef ダイアログリファレンス。
+   * @param data ダイアログに受け渡すデータ。
+   * @param dbApiService DB サービス。
+   * @param progressService プログレスサービス。
    */
   public constructor(
     public dialogRef: MatDialogRef<UserEditDialogComponent, DialogResult>,
