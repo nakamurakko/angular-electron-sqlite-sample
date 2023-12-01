@@ -64,7 +64,7 @@
     "@angular/compiler-cli": "^17.0.3",
     "@types/jasmine": "~4.3.0",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
-    "@typescript-eslint/parser": "^6.11.0",
+    "@typescript-eslint/parser": "^6.13.1",
     "electron": "^26.6.0",
     "electron-builder": "^24.6.4",
     "jasmine-core": "^5.1.1",
