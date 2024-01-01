@@ -65,7 +65,7 @@
     "@types/jasmine": "~4.3.0",
     "@typescript-eslint/eslint-plugin": "^6.16.0",
     "@typescript-eslint/parser": "^6.16.0",
-    "electron": "^26.6.3",
+    "electron": "^28.1.0",
     "electron-builder": "^24.9.1",
     "jasmine-core": "^5.1.1",
     "karma": "~6.4.0",
