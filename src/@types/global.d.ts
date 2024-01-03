@@ -4,14 +4,14 @@ import { IUser } from 'src/@types/entities/interfaces/i-user';
 
 declare global {
   interface Window {
-    DbApi: DbApi
+    dbApi: IDbApi
   }
 }
 
 /**
- * DbApi 用インターフェイス。
+ * dbApi 用インターフェイス。
  */
-export interface DbApi {
+export interface IDbApi {
 
   /**
    * ユーザーを追加する。

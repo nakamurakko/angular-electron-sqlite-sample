@@ -20,7 +20,7 @@ export class DbApiService {
    * @returns ユーザー。
    */
   public addUser(user: IUser): Observable<IUser> {
-    return defer(() => window.DbApi.addUser(user));
+    return defer(() => window.dbApi.addUser(user));
   }
 
   /**
@@ -30,7 +30,7 @@ export class DbApiService {
    * @returns ユーザー。
    */
   public getUser(userId: string): Observable<IUser> {
-    return defer(() => window.DbApi.getUser(userId));
+    return defer(() => window.dbApi.getUser(userId));
   }
 
   /**
@@ -39,7 +39,7 @@ export class DbApiService {
    * @returns ユーザー一覧。
    */
   public getUsers(): Observable<Array<IUser>> {
-    return defer(() => window.DbApi.getUsers());
+    return defer(() => window.dbApi.getUsers());
   }
 
 }

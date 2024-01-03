@@ -6,7 +6,7 @@ import { contextBridge, ipcRenderer } from 'electron';
 
 import { IUser } from '../src/@types/entities/interfaces/i-user';
 
-contextBridge.exposeInMainWorld('DbApi', {
+contextBridge.exposeInMainWorld('dbApi', {
 
   /**
    * ユーザーを追加する。
