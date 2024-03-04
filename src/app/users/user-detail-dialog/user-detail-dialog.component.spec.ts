@@ -6,10 +6,12 @@ describe('UserDetailDialogComponent', () => {
   let component: UserDetailDialogComponent;
   let fixture: ComponentFixture<UserDetailDialogComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [UserDetailDialogComponent]
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [UserDetailDialogComponent]
+    })
+      .compileComponents();
+
     fixture = TestBed.createComponent(UserDetailDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

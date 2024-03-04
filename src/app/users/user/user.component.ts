@@ -5,7 +5,11 @@ import { DbApiService } from 'src/app/services/db-api.service';
 import { ProgressService } from 'src/app/services/progress.service';
 
 import { Component, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { UserDetailDialogComponent } from '../user-detail-dialog/user-detail-dialog.component';
 import { UserEditDialogComponent } from '../user-edit-dialog/user-edit-dialog.component';
@@ -15,8 +19,15 @@ import { UserEditDialogComponent } from '../user-edit-dialog/user-edit-dialog.co
  */
 @Component({
   selector: 'app-user',
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule,
+    MatToolbarModule
+  ],
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrl: './user.component.css'
 })
 export class UserComponent implements OnInit {
 

@@ -14,4 +14,5 @@ export interface IUser {
 
   /** 写真。 Data URL + base64 データで文字列化する。 */
   portrait?: string;
+
 }

@@ -4,16 +4,32 @@ import { DialogResult } from 'src/app/data-types/dialog-result';
 import { DbApiService } from 'src/app/services/db-api.service';
 import { ProgressService } from 'src/app/services/progress.service';
 
+import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 /**
  * ユーザー編集ダイアログコンポーネント。
  */
 @Component({
   selector: 'app-user-edit-dialog',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
+  ],
   templateUrl: './user-edit-dialog.component.html',
-  styleUrls: ['./user-edit-dialog.component.css']
+  styleUrl: './user-edit-dialog.component.css'
 })
 export class UserEditDialogComponent implements OnInit {
 
@@ -22,7 +38,7 @@ export class UserEditDialogComponent implements OnInit {
 
   /**
    * コンストラクター。
-   * 
+   *
    * @param dialogRef ダイアログリファレンス。
    * @param data ダイアログに受け渡すデータ。
    * @param dbApiService DB サービス。
@@ -81,5 +97,7 @@ export class UserEditDialogComponent implements OnInit {
  * UserEditDialogComponent.data 用インターフェイス。
  */
 export interface UserEditDialogData {
+
   user: IUser;
+
 }

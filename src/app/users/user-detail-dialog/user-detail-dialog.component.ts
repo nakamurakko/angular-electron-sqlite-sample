@@ -4,16 +4,26 @@ import { DialogResult } from 'src/app/data-types/dialog-result';
 import { DbApiService } from 'src/app/services/db-api.service';
 import { ProgressService } from 'src/app/services/progress.service';
 
+import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 /**
  * ユーザー詳細ダイアログコンポーネント。
  */
 @Component({
   selector: 'app-user-detail-dialog',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule
+  ],
   templateUrl: './user-detail-dialog.component.html',
-  styleUrls: ['./user-detail-dialog.component.css']
+  styleUrl: './user-detail-dialog.component.css'
 })
 export class UserDetailDialogComponent implements OnInit {
 
@@ -64,5 +74,7 @@ export class UserDetailDialogComponent implements OnInit {
  * UserDetailDialogComponent.data 用インターフェイス。
  */
 export interface UserDetailDialogData {
+
   userId: string;
+
 }

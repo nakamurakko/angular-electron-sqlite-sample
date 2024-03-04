@@ -6,10 +6,12 @@ describe('UserEditDialogComponent', () => {
   let component: UserEditDialogComponent;
   let fixture: ComponentFixture<UserEditDialogComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [UserEditDialogComponent]
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [UserEditDialogComponent]
+    })
+      .compileComponents();
+
     fixture = TestBed.createComponent(UserEditDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
