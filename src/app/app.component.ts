@@ -7,7 +7,6 @@ import { ProgressService } from './services/progress.service';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [
     CommonModule,
     MatProgressSpinnerModule,

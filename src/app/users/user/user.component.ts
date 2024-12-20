@@ -19,7 +19,6 @@ import { UserEditDialogComponent } from '../user-edit-dialog/user-edit-dialog.co
  */
 @Component({
   selector: 'app-user',
-  standalone: true,
   imports: [
     MatButtonModule,
     MatIconModule,

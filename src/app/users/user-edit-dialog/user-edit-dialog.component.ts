@@ -18,7 +18,6 @@ import { MatInputModule } from '@angular/material/input';
  */
 @Component({
   selector: 'app-user-edit-dialog',
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

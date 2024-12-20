@@ -15,7 +15,6 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
  */
 @Component({
   selector: 'app-user-detail-dialog',
-  standalone: true,
   imports: [
     CommonModule,
     MatButtonModule,
