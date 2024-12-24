@@ -17,7 +17,7 @@ async function createWindow(): Promise<void> {
   });
 
   // そしてアプリの index.html を読み込みます。
-  await mainWindow.loadFile(path.join(__dirname, 'angular-electron-sqlite-sample/index.html'));
+  await mainWindow.loadFile(path.join(__dirname, 'angular-electron-sqlite-sample/browser/index.html'));
 
   // メニューバーを非表示。
   mainWindow.setMenuBarVisibility(false);
