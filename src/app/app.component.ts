@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router, RouterOutlet } from '@angular/router';
@@ -8,7 +7,6 @@ import { ProgressService } from './services/progress.service';
 @Component({
   selector: 'app-root',
   imports: [
-    CommonModule,
     MatProgressSpinnerModule,
     RouterOutlet
   ],
