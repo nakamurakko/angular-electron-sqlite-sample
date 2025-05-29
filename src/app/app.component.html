@@ -1,10 +1,10 @@
 <div class="div-app-content">
 
-  <div *ngIf="progressStatus"
-       class="div-app-progress">
-    <mat-spinner class="spinner-opacity">
-    </mat-spinner>
+  @if (progressStatus) {
+  <div class="div-app-progress">
+    <mat-spinner class="spinner-opacity"></mat-spinner>
   </div>
+  }
 
   <div class="div-app-main"
        role="main">

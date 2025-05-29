@@ -4,7 +4,6 @@ import { DialogResult } from 'src/app/data-types/dialog-result';
 import { DbApiService } from 'src/app/services/db-api.service';
 import { ProgressService } from 'src/app/services/progress.service';
 
-import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -16,7 +15,6 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 @Component({
   selector: 'app-user-detail-dialog',
   imports: [
-    CommonModule,
     MatButtonModule,
     MatCardModule,
     MatDialogModule

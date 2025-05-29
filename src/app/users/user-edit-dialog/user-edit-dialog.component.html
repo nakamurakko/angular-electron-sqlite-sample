@@ -2,8 +2,12 @@
 
   <mat-card>
     <mat-card-header>
-      <mat-card-title *ngIf="user?.id">Edit user</mat-card-title>
-      <mat-card-title *ngIf="!user?.id">New user</mat-card-title>
+      @if (user && user.id) {
+      <mat-card-title>Edit user</mat-card-title>
+      }
+      @else {
+      <mat-card-title>New user</mat-card-title>
+      }
     </mat-card-header>
 
     <mat-card-content>
