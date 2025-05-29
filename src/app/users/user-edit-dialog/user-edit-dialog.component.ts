@@ -4,6 +4,7 @@ import { DialogResult } from 'src/app/data-types/dialog-result';
 import { DbApiService } from 'src/app/services/db-api.service';
 import { ProgressService } from 'src/app/services/progress.service';
 
+import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 @Component({
   selector: 'app-user-edit-dialog',
   imports: [
+    CommonModule,
     FormsModule,
     MatButtonModule,
     MatCardModule,
