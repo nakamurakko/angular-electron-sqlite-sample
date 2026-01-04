@@ -14,7 +14,8 @@
     "build:development:electron": "tsc --project tsconfig.electron.development.json",
     "build-portable": "npm run build:all && electron-builder build --windows portable",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint"
   },
   "private": true,
   "build": {
@@ -24,13 +25,13 @@
     },
     "files": [
       "!.angular",
-      "!.eslintrc.json",
       "!.github",
       "!.vscode",
       "!angular.json",
       "!build-dev.bat",
       "!build-portable.bat",
       "!database.sqlite",
+      "!eslint.config.js",
       "!src",
       "!LICENSE",
       "!README.md",
@@ -63,16 +64,17 @@
     "@angular/cli": "^20.0.0",
     "@angular/compiler-cli": "^20.0.0",
     "@types/jasmine": "~5.1.0",
-    "@typescript-eslint/eslint-plugin": "^8.33.0",
-    "@typescript-eslint/parser": "^8.33.0",
+    "angular-eslint": "21.0.1",
     "electron": "^36.3.2",
     "electron-builder": "^26.0.12",
+    "eslint": "^9.39.1",
     "jasmine-core": "^5.7.1",
     "karma": "^6.4.4",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.8.3"
+    "typescript": "~5.8.3",
+    "typescript-eslint": "8.46.4"
   }
 }
