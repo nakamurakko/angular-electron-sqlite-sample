@@ -2,7 +2,7 @@
 
   <mat-card>
     <mat-card-header>
-      @if (user && user.id) {
+      @if (user() && user().id) {
       <mat-card-title>Edit user</mat-card-title>
       }
       @else {
@@ -16,7 +16,7 @@
           <mat-label>Last name</mat-label>
           <input matInput
                  placeholder="Last name"
-                 [(ngModel)]="user.lastName" />
+                 [(ngModel)]="user().lastName" />
         </mat-form-field>
       </span>
 
@@ -25,7 +25,7 @@
           <mat-label>First name</mat-label>
           <input matInput
                  placeholder="First name"
-                 [(ngModel)]="user.firstName" />
+                 [(ngModel)]="user().firstName" />
         </mat-form-field>
       </span>
     </mat-card-content>
@@ -34,10 +34,8 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="center">
-  <button mat-raised-button
-          type="button"
+  <button matButton="elevated"
           (click)="onSave()">Save</button>
-  <button mat-raised-button
-          type="button"
+  <button matButton="elevated"
           (click)="onCancel()">Cancel</button>
 </mat-dialog-actions>

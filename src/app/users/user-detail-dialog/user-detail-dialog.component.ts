@@ -1,13 +1,14 @@
 import { finalize } from 'rxjs';
-import { IUser } from 'src/@types/entities/interfaces/i-user';
-import { DialogResult } from 'src/app/data-types/dialog-result';
-import { DbApiService } from 'src/app/services/db-api.service';
-import { ProgressService } from 'src/app/services/progress.service';
 
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+
+import { IUser } from '../../../@types/entities/interfaces/i-user';
+import { DialogResult } from '../../data-types/dialog-result';
+import { DbApiService } from '../../services/db-api.service';
+import { ProgressService } from '../../services/progress.service';
 
 /**
  * ユーザー詳細ダイアログコンポーネント。
@@ -20,41 +21,26 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
     MatDialogModule
   ],
   templateUrl: './user-detail-dialog.component.html',
-  styleUrl: './user-detail-dialog.component.css'
+  styleUrl: './user-detail-dialog.component.css',
 })
 export class UserDetailDialogComponent implements OnInit {
 
-  /** ユーザー ID。 */
-  private userId: string = '';
+  private dbApiService = inject(DbApiService);
+  private progressService = inject(ProgressService);
+  public dialogRef = inject(MatDialogRef<UserDetailDialogComponent, DialogResult>);
+  public data = inject<UserDetailDialogData>(MAT_DIALOG_DATA);
 
   /** ユーザー情報。 */
-  public user: IUser = {};
-
-  /**
-   * コンストラクター。
-   *
-   * @param dialogRef ダイアログリファレンス。
-   * @param data ダイアログに受け渡すデータ。
-   * @param dbApiService DB サービス。
-   * @param progressService プログレスサービス。
-   */
-  public constructor(
-    public dialogRef: MatDialogRef<UserDetailDialogComponent, DialogResult>,
-    @Inject(MAT_DIALOG_DATA) public data: UserDetailDialogData,
-    private dbApiService: DbApiService,
-    private progressService: ProgressService
-  ) {
-    this.userId = data.userId;
-  }
+  public user = signal<IUser>({});
 
   public ngOnInit(): void {
     this.progressService.showProgress();
-    this.dbApiService.getUser(this.userId)
+    this.dbApiService.getUser(this.data.userId)
       .pipe(
         finalize(() => this.progressService.hideProgress())
       )
       .subscribe(value => {
-        this.user = value;
+        this.user.set(value);
       });
   }
 

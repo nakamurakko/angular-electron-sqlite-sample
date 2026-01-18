@@ -1,16 +1,16 @@
 import { delay, finalize, map, mergeMap, takeWhile, tap } from 'rxjs';
-import { IUser } from 'src/@types/entities/interfaces/i-user';
-import { DialogResult } from 'src/app/data-types/dialog-result';
-import { DbApiService } from 'src/app/services/db-api.service';
-import { ProgressService } from 'src/app/services/progress.service';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { IUser } from '../../../@types/entities/interfaces/i-user';
+import { DialogResult } from '../../data-types/dialog-result';
+import { DbApiService } from '../../services/db-api.service';
+import { ProgressService } from '../../services/progress.service';
 import { UserDetailDialogComponent } from '../user-detail-dialog/user-detail-dialog.component';
 import { UserEditDialogComponent } from '../user-edit-dialog/user-edit-dialog.component';
 
@@ -26,28 +26,18 @@ import { UserEditDialogComponent } from '../user-edit-dialog/user-edit-dialog.co
     MatToolbarModule
   ],
   templateUrl: './user.component.html',
-  styleUrl: './user.component.css'
+  styleUrl: './user.component.css',
 })
 export class UserComponent implements OnInit {
 
-  /** 一覧のヘッダー。 */
-  public displayedColumns: Array<string> = ['lastName', 'firstName', 'showUserDetail', 'editUser'];
-  /** ユーザー一覧。 */
-  public users: Array<IUser> = new Array<IUser>();
+  private dbApiService = inject(DbApiService);
+  private progressService = inject(ProgressService);
+  public dialog = inject(MatDialog);
 
-  /**
-   * コンストラクター。
-   *
-   * @param dbApiService DB サービス。
-   * @param progressService プログレスサービス。
-   * @param dialog ダイアログ。
-   */
-  public constructor(
-    private dbApiService: DbApiService,
-    private progressService: ProgressService,
-    public dialog: MatDialog
-  ) {
-  }
+  /** 一覧のヘッダー。 */
+  public displayedColumns: string[] = ['lastName', 'firstName', 'showUserDetail', 'editUser'];
+  /** ユーザー一覧。 */
+  public users = signal<IUser[]>([]);
 
   public ngOnInit(): void {
     this.progressService.showProgress();
@@ -58,7 +48,7 @@ export class UserComponent implements OnInit {
         finalize(() => this.progressService.hideProgress())
       )
       .subscribe(value => {
-        this.users = value;
+        this.users.set(value);
       });
   }
 
@@ -84,10 +74,11 @@ export class UserComponent implements OnInit {
         mergeMap(() => this.dbApiService.getUsers()),
         // プログレス表示を分かりやすくするために1秒遅延させる。
         delay(1000),
-        finalize(() => this.progressService.hideProgress()),
-        mergeMap(x => this.users = x)
+        finalize(() => this.progressService.hideProgress())
       )
-      .subscribe();
+      .subscribe(value => {
+        this.users.set(value);
+      });
   }
 
   /**
@@ -105,10 +96,11 @@ export class UserComponent implements OnInit {
         mergeMap(() => this.dbApiService.getUsers()),
         // プログレス表示を分かりやすくするために1秒遅延させる。
         delay(1000),
-        finalize(() => this.progressService.hideProgress()),
-        mergeMap(x => this.users = x)
+        finalize(() => this.progressService.hideProgress())
       )
-      .subscribe();
+      .subscribe(value => {
+        this.users.set(value);
+      });
   }
 
 }

@@ -4,6 +4,7 @@
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     "module": "commonjs",                                /* Specify what module code is generated. */
+    "moduleResolution": "node",
     "baseUrl": ".",                                      /* Specify the base directory to resolve non-relative module names. */
     "paths": {                                           /* Specify a set of entries that re-map imports to additional lookup locations. */
       "*": [

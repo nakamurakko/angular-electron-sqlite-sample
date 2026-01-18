@@ -14,7 +14,7 @@ describe('UserDetailDialogComponent', () => {
 
     fixture = TestBed.createComponent(UserDetailDialogComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {

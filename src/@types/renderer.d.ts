@@ -33,6 +33,6 @@ export interface IDbApi {
    *
    * @returns ユーザー一覧。
    */
-  getUsers(): Promise<Array<IUser>>;
+  getUsers(): Promise<IUser[]>;
 
 }

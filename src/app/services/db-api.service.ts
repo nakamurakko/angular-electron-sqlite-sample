@@ -1,17 +1,16 @@
 import { defer, Observable } from 'rxjs';
-import { IUser } from 'src/@types/entities/interfaces/i-user';
 
 import { Injectable } from '@angular/core';
+
+import { IUser } from '../../@types/entities/interfaces/i-user';
 
 /**
  * DbApi 用サービス。
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DbApiService {
-
-  public constructor() { }
 
   /**
    * ユーザーを追加する。
@@ -38,7 +37,7 @@ export class DbApiService {
    *
    * @returns ユーザー一覧。
    */
-  public getUsers(): Observable<Array<IUser>> {
+  public getUsers(): Observable<IUser[]> {
     return defer(() => window.dbApi.getUsers());
   }
 

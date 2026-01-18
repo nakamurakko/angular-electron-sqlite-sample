@@ -2,7 +2,7 @@
 
   <mat-card>
     <mat-card-header>
-      <mat-card-title>{{user.lastName}} {{user.firstName}}</mat-card-title>
+      <mat-card-title>{{user().lastName}} {{user().firstName}}</mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
@@ -11,15 +11,15 @@
         <tbody>
           <tr>
             <td>ID</td>
-            <td>{{user.id}}</td>
+            <td>{{user().id}}</td>
           </tr>
         </tbody>
       </table>
 
-      @if (user.portrait) {
+      @if (user().portrait) {
       <img mat-card-image
            alt="portrait"
-           [src]="user.portrait">
+           [src]="user().portrait">
       }
 
     </mat-card-content>
@@ -28,7 +28,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="center">
-  <button mat-raised-button
-          type="button"
+  <button matButton="elevated"
           (click)="onOk()">OK</button>
 </mat-dialog-actions>

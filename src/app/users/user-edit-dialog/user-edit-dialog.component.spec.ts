@@ -14,7 +14,7 @@ describe('UserEditDialogComponent', () => {
 
     fixture = TestBed.createComponent(UserEditDialogComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {

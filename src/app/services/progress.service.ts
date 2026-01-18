@@ -1,21 +1,14 @@
-import { BehaviorSubject } from 'rxjs';
-
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 /**
  * プログレス表示用サービス。
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProgressService {
 
-  private _isShowProgress: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  public get isShowProgress(): boolean {
-    return this._isShowProgress.getValue();
-  }
-
-  public constructor() { }
+  public isShowProgress = signal<boolean>(false);
 
   /**
    * プログレスを表示状態にする。
@@ -23,7 +16,7 @@ export class ProgressService {
    * @returns プログレス表示状態。
    */
   public showProgress(): void {
-    this._isShowProgress.next(true);
+    this.isShowProgress.set(true);
   }
 
   /**
@@ -32,7 +25,7 @@ export class ProgressService {
    * @returns プログレス表示状態。
    */
   public hideProgress(): void {
-    this._isShowProgress.next(false);
+    this.isShowProgress.set(false);
   }
 
 }
