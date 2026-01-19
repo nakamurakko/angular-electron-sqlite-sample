@@ -17,7 +17,7 @@ async function createWindow(): Promise<void> {
   });
 
   // そしてアプリの index.html を読み込みます。
-  await mainWindow.loadFile(path.join(__dirname, 'angular-electron-sqlite-sample/browser/index.html'));
+  await mainWindow.loadFile(path.join(__dirname, 'angular-electron-sqlite-sample/index.html'));
 
   // メニューバーを非表示。
   mainWindow.setMenuBarVisibility(false);
@@ -60,7 +60,7 @@ registerDbIpc();
 // DB を初期化。
 void AppDataSource.initialize()
   .then(async dataSource => {
-    const users: Array<User> = await dataSource.manager.find(User);
+    const users: User[] = await dataSource.manager.find(User);
     if (users.length === 0) {
       // サンプルデータを追加。
       const user1: User = new User();

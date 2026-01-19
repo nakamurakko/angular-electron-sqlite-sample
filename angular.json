@@ -17,9 +17,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular/build:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
+            "index": "src/index.html",
+            "outputPath": "dist/angular-electron-sqlite-sample",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
