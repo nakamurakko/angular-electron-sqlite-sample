@@ -43,7 +43,7 @@ export function registerDbIpc(): void {
      *
      * @returns ユーザー一覧。
      */
-    async (): Promise<Array<IUser>> => {
+    async (): Promise<IUser[]> => {
       return await AppDataSource.getRepository(User)
         .find()
         .then(value => value.map(x => x as IUser));

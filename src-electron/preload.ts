@@ -28,6 +28,6 @@ contextBridge.exposeInMainWorld('dbApi', {
    *
    * @returns ユーザー一覧。
    */
-  getUsers: (): Promise<Array<IUser>> => ipcRenderer.invoke('getUsers').then(value => value as Array<IUser>)
+  getUsers: (): Promise<IUser[]> => ipcRenderer.invoke('getUsers').then(value => value as IUser[])
 
 });
