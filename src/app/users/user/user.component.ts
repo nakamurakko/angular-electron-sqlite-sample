@@ -32,7 +32,7 @@ export class UserComponent implements OnInit {
 
   private dbApiService = inject(DbApiService);
   private progressService = inject(ProgressService);
-  public dialog = inject(MatDialog);
+  private dialog = inject(MatDialog);
 
   /** 一覧のヘッダー。 */
   public displayedColumns: string[] = ['lastName', 'firstName', 'showUserDetail', 'editUser'];
