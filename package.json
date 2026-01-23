@@ -74,6 +74,7 @@
     "@angular/build": "^21.1.1",
     "@angular/cli": "^21.1.1",
     "@angular/compiler-cli": "^21.1.1",
+    "@types/node": "^25.0.10",
     "angular-eslint": "21.1.0",
     "electron": "^40.0.0",
     "electron-builder": "^26.4.0",
