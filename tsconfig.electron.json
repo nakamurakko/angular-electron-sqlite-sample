@@ -4,13 +4,14 @@
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     "module": "commonjs",                                /* Specify what module code is generated. */
-    "moduleResolution": "node",
-    "baseUrl": ".",                                      /* Specify the base directory to resolve non-relative module names. */
-    "paths": {                                           /* Specify a set of entries that re-map imports to additional lookup locations. */
-      "*": [
-        "node_modules/*"
-      ]
-    },
+    "moduleResolution": "bundler",
+    // "baseUrl": ".",                                   /* Specify the base directory to resolve non-relative module names. */
+    // "paths": {                                        /* Specify a set of entries that re-map imports to additional lookup locations. */
+    //   "*": [
+    //     "node_modules/*"
+    //   ]
+    // },
+    "rootDir": "./src-electron/",                        /* Specify the root folder within your source files. */
     "sourceMap": false,                                  /* Create source map files for emitted JavaScript files. */
     "outDir": "dist",                                    /* Specify an output folder for all emitted files. */
     "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
