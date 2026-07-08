@@ -41,9 +41,9 @@
     "electron": "^43.1.0",
     "electron-builder": "^26.15.3",
     "eslint": "^10.3.0",
-    "jsdom": "^28.0.0",
+    "jsdom": "^29.1.1",
     "typescript": "~6.0.2",
-    "typescript-eslint": "8.60.1",
+    "typescript-eslint": "^8.63.0",
     "vitest": "^4.0.8"
   },
   "main": "dist/electron-main.js",
