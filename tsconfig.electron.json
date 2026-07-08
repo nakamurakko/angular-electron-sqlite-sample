@@ -18,7 +18,8 @@
     "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
     "noImplicitAny": true,                               /* Enable error reporting for expressions and declarations with an implied 'any' type. */
     "skipLibCheck": true,                                /* Skip type checking all .d.ts files. */
-    "emitDecoratorMetadata": true // for typeorm
+    "emitDecoratorMetadata": true, // for typeorm
+    "experimentalDecorators": true, // for typeorm
   },
   "include": [
     "src-electron/**/*"

@@ -30,8 +30,16 @@
       "type": "chrome",
       "request": "attach",
       "port": 9223,
-      "webRoot": "${workspaceFolder}",
-      "timeout": 60000
+      "webRoot": "${workspaceFolder}/src",
+      "timeout": 60000,
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceFolder}/dist/angular-electron-sqlite-sample/browser/**/*.js"
+      ],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
+      ],
     }
   ],
   "compounds": [

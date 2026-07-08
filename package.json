@@ -1,7 +1,6 @@
 {
   "name": "angular-electron-sqlite-sample",
   "version": "1.0.0",
-  "main": "dist/electron-main.js",
   "scripts": {
     "ng": "ng",
     "start:angular": "ng serve",
@@ -17,20 +16,37 @@
     "test": "ng test",
     "lint": "ng lint"
   },
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true,
-    "overrides": [
-      {
-        "files": "*.html",
-        "options": {
-          "parser": "angular"
-        }
-      }
-    ]
-  },
   "private": true,
-  "packageManager": "npm@11.7.0",
+  "packageManager": "npm@11.15.0",
+  "dependencies": {
+    "@angular/cdk": "^22.0.3",
+    "@angular/common": "^22.0.0",
+    "@angular/compiler": "^22.0.0",
+    "@angular/core": "^22.0.0",
+    "@angular/forms": "^22.0.0",
+    "@angular/material": "^22.0.3",
+    "@angular/platform-browser": "^22.0.0",
+    "@angular/router": "^22.0.0",
+    "rxjs": "~7.8.0",
+    "sqlite3": "^5.1.7",
+    "tslib": "^2.3.0",
+    "typeorm": "^0.3.28"
+  },
+  "devDependencies": {
+    "@angular/build": "^22.0.5",
+    "@angular/cli": "^22.0.5",
+    "@angular/compiler-cli": "^22.0.0",
+    "@eslint/js": "^10.0.1",
+    "angular-eslint": "22.0.0",
+    "electron": "^43.1.0",
+    "electron-builder": "^26.15.3",
+    "eslint": "^10.3.0",
+    "jsdom": "^28.0.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "8.60.1",
+    "vitest": "^4.0.8"
+  },
+  "main": "dist/electron-main.js",
   "build": {
     "asar": "false",
     "directories": {
@@ -53,34 +69,5 @@
     "extraFiles": [
       "sample.png"
     ]
-  },
-  "dependencies": {
-    "@angular/cdk": "~22.0.3",
-    "@angular/common": "^22.0.5",
-    "@angular/compiler": "^22.0.5",
-    "@angular/core": "^22.0.5",
-    "@angular/forms": "^22.0.5",
-    "@angular/material": "~22.0.3",
-    "@angular/platform-browser": "^22.0.5",
-    "@angular/router": "^22.0.5",
-    "reflect-metadata": "^0.2.2",
-    "rxjs": "~7.8.0",
-    "sqlite3": "^5.1.7",
-    "tslib": "^2.3.0",
-    "typeorm": "^0.3.28"
-  },
-  "devDependencies": {
-    "@angular/build": "^22.0.5",
-    "@angular/cli": "^22.0.5",
-    "@angular/compiler-cli": "^22.0.5",
-    "@types/node": "^25.6.0",
-    "angular-eslint": "22.0.0",
-    "electron": "^40.9.2",
-    "electron-builder": "^26.8.1",
-    "eslint": "^9.39.4",
-    "jsdom": "^27.1.0",
-    "typescript": "~6.0.3",
-    "typescript-eslint": "^8.62.1",
-    "vitest": "^4.1.5"
   }
 }
