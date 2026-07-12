@@ -48,7 +48,8 @@
       "configurations": [
         "Debug Main Process",
         "Debug Renderer Process"
-      ]
+      ],
+      "stopAll": true,
     }
   ]
 }
