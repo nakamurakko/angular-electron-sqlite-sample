@@ -20,7 +20,7 @@ export class App implements OnInit {
   /** Router。 */
   private router = inject(Router);
 
-  protected readonly title = signal('angular-electron-sqlite-sample');
+  protected readonly title = signal('angular-electron-sqlite-sample').asReadonly();
 
   /**
    * プログレスの状態を取得する。
