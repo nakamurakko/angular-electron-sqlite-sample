@@ -55,6 +55,7 @@
     "files": [
       "!.angular",
       "!.github",
+      "!.npmrc",
       "!.vscode",
       "!angular.json",
       "!build-dev.bat",
